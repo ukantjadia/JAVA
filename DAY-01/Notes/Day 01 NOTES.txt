@@ -1,0 +1,109 @@
+DAY-01
+So in this class we are going to have some basic topic of JAVA with some program.
+INDEX:-
+01.set path
+02.data type 
+03.identifiers 
+04.literals{last note}
+05.special case float and long
+06.operators types
+06.01 airth06_01.java
+06.02 relat06_02.java
+06.03 Shift06_03.java
+06.04 logical06_04.java
+06.05 bitwise06_04.java
+      explaining the bitwise operation
+
+--------------------------------------------------START-------------------------------------------------
+
+---------------------------------------------------01---------------------------------------------------
+01.SET PATH
+~when we run the program on CMD then we have to set some specefic path to run jdk 
+	or path to run jdk from CMD
+~type this path in your CMD
+	'path-%path%;"C:\Program Files\Java\jdk-14.0.1\bin"';
+	or in your system it looks like 
+	'path=%path%;"location_of_jdk-v_bin"';
+~to check weather your java is working or not 
+~type - 'java' OR 'javac' in CMD
+	it will show some command realted to java if not then reapeat the process of installation of jdk.
+---------------------------------------------------END--------------------------------------------------
+
+---------------------------------------------------02---------------------------------------------------
+02.DATA TYPE
+~Primitive data type
+	byte short int long 
+	float double
+	char
+	boolean
+~Non-peimitive data type
+	String
+	Arrays
+	Classes
+
+byte:size-1 byte
+	  8-bit signed two's complement integer.
+short:size-2 byte
+	  16-bit signed two's complement integer.
+int:size-4 byte
+	  32-bit signed two's complement integer.
+long:size-8 byte
+	  64-bit signed two's compelment integer.
+		
+float:size-4 byte	
+		32-bit
+double:size-8 byte
+		64-bit
+
+char:size-16-bit of Unicode character.
+
+boolean:it has only two possible value as "Truth and False"
+
+~Non-primitive data type will discuss later in chapter.
+---------------------------------------------------END--------------------------------------------------
+---------------------------------------------------03---------------------------------------------------
+03.INDENTIFIERS
+Idnetifiers: this are the symbolic name used for the identification.
+~the first character must be a valid character as {letter,_,$}.
+	it should not be a number, symbol.
+	like 	  this 				      not this
+			my_account				^myaccount
+			_account				21hello
+			$money					64money	
+---------------------------------------------------END--------------------------------------------------
+---------------------------------------------------04---------------------------------------------------
+04.LITERALS
+~it is notation that represent the fix value in a program. or constent.
+---------------------------------------------------END--------------------------------------------------
+---------------------------------------------------05---------------------------------------------------
+05.special case float and long
+~in other language we can simply decalre the float and long variable
+	but in java we have to add the first letter of our type at last of value of variable 
+	like 	in JAVA 				in Other Language
+			float i = 124.15f;		float i = 124.15;
+			long k = 6461761346;	long int e = 4613164;
+---------------------------------------------------END--------------------------------------------------
+---------------------------------------------------06---------------------------------------------------
+06.OPERATORS
+~Airthmatic Operators:--->>  +,-,*,/,%,+=,-=,*=,%=,/=.
+~Relational Operators:--->>  ==,!=,<,<=,>,>=.
+~Logical Operators:--->>  ||,&&,!
+~Bitwise Operators:--->>  &,|,~,^,
+~Shift Operators:--->> <<,>>,>>>
+
+~Airthmatic Operators
+	problem:
+	airth06_01.java{wirte java program showing the working of all Airthmatic Operators.}
+~Relational Operators
+	problem:
+	relat06_02.java{wirte java program showing the working of all Relational Operators.}
+~Shift Operators
+	problem:
+	Shift06_03.java{wirte java program showing the working of Shift Operators.}
+~Logical Operators
+	problem:
+	logical06_04.java{wirte java program showing the working of all Logical Operators.}
+~Bitwise Operators
+	problem:
+	bitwise06_05.java{write java program showing the working of all Bitwise Operators.}	
+	
