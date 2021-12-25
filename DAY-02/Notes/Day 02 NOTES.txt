@@ -1,0 +1,275 @@
+DAY-02
+Index
+1.type conversion
+	1.1 Widening conversion
+	1.2 Narrowing conversion
+2.conditional statement
+	2.1 If-else
+		2.1.1 arrange smaller to bigger
+	2.2 Loop
+		2.2.1 counting
+	2.3 Break/continue
+		2.3.1 nested loop testing and square
+	2.4 Switch
+		2.4.1 give the day
+2.1.0 prime number between given range
+
+---------------------------------START----------------------------
+----------------------------------01------------------------------
+1.type conversion/casting
+	1.1 Widening conversion
+	1.2 Narrowing conversion
+~Type Conversion means converting the one data type to other data type
+	there are two type of conversion in JAVA
+	1.Widening Conversion
+	2.Narrowing Conversion
+~1. Widening Conversion:--> {it can be done manually or automatically}
+			  converting the smaller data type to bigger data type.
+			  conversion follows the following order{smaller to bigger}
+			  byte -> short -> int/char -> long -> float -> double
+	example:- byte a = 10;
+			  int i = a; // byte converting to int {conversion is done manually}
+			  long l = a+i; // int and byte converting to long{conversion is done automatically}
+			  
+			  int i = 20;
+			  float d = 44.1;
+			  doubel k = i+d;// 'k' gives the value in double formate
+~NOTE:->> byte and short are always converted into int weather it int present or not.
+~2. Narrowing Conversion:--> {it always done manually}
+			  converting bigger data type to smaller data type
+			  conversion follows the following order{bigger to smaller}
+			  double -> float -> long -> int/char -> short -> byte
+	example:- int i = (int)(23.0/3.3)
+			  short s = 32;
+			  int s = 33.2;
+			  float kk = (float)(i*s*d);
+			  char i = (cahr) 65;
+			  print'i';prnt 'kk';
+---------------------------------END------------------------------
+---------------------------------02-------------------------------
+2.Conditional Statement
+~2.1 If-else:--> if are used to check the condition, if 'if' condition is true than it will exucate the code of if block and if 'if' is wrong than the code of else block will exucate.
+		syntax is:
+			if(condition)
+				{
+					//block of code
+				}
+			else 
+				{
+					//block of code 
+				}
+				  you can use many nested use of it as you want
+example 2.1.1: 5,15,25 arrange them in decreasing order
+```java
+	class arrange 
+	{
+		public static void main(String args[])
+			{
+				int a = 5 , b = 15 , c = 25;
+				if(a<b)
+				{
+					if(c<a)
+						System.out.println(" "+c+" "+a+" "+b);
+					else if(c>b)
+						System.out.println(" "+a+" "+b+" "+c);
+					else
+						System.out.println(" "+a+" "+c+" "+b);
+				}
+				else
+				{
+					if(c<a)
+						System.out.println(" "+c+" "+a+" "+b);
+					else if(c>a)
+						System.out.println(" "+b+" "+a+" "+c);
+					else	
+						System.out.println(" "+b+" "+c+" "+a);
+				}
+			}
+	}
+```
+--------------------------------2.1.1-----------------------------
+2.2  Loop
+	There are three type of loops
+	for loop 								while loop 				do while loop
+	
+	for loop : syntax.
+			for(intialization ; condition ; changes)
+			{
+				//blocks of code
+			}
+example 2.2.1 : give the reverse counting using for loop
+```java
+class forcount 		
+{
+	public static void main(String args[])
+	{
+		for(int a = 10 ; a >= 0 ; --a)
+		{
+				System.out.print(" "+a);
+		}
+	}
+}
+```
+-------------------------------------------------------------
+	while loop : syntax.
+				while(condition)
+				{
+					//block of code
+					changing statement;
+				}
+	
+example 2.2.2 : give the reverse counting using while loop	
+```java 
+class whilecount
+{
+	public static void main(String args[])
+	{
+		int a = 10;
+		while(a > =0)
+		{
+			System.out.print(" "+a);
+			--a;
+		}
+	}
+}
+```
+-------------------------------------------------------------
+	do while loop : it will excuate once without checking any condition 
+					syntax.
+	do
+	{
+		//block of code
+		changing statement;
+	}while(condition);
+	
+example 2.2.3 : give the use of do while loop using counting
+```java
+class dowhilecount
+{
+	public static void main(String args[])
+	{
+		int a = 10;
+		do
+		{
+			System.out.print(" "+a);
+			--a;
+		}while( a >= 0 );
+	}
+
+}
+```
+--------------------------------END-------------------------------
+---------------------------------2.3------------------------------
+2.3 Break/continue
+	
+	Break: break statement are used to breaking loop or coming out from loop
+	Continue: continue statement are used to skip the loop
+	
+example 2.3.1 nested loop testing and square	
+```java
+class contbreak
+{
+	public static void main(String args[])
+	{
+		int a  , kk;
+		for(int i = 10 ; i< i*i ; i++)// here it will run the infinte loop to break we will use the break condition
+		{
+			if(i< 15) 
+				break;
+			System.out.print(" "+i);
+		}
+		
+		while(int i = 10)
+		{
+			for(int k = 0 ; k < k*k ; k++)
+			{
+				kk = k*i;
+				System.out.println(" "+k*i);
+				if(kk >20)
+					break;
+			}
+		}
+	}
+	
+}		
+```
+--------------------------------END-------------------------------
+---------------------------------2.4------------------------------
+2.4 Switch
+	Switch: switch statement are used to jump on the certain block of code by giveing choice to jump on that and then excuate that code and come out to the switch operation.
+	
+example 2.4.1 Give the day using switch operation
+```java
+class theday
+{
+	public static void main(String args[])
+	{
+		int choice
+		switch(4)
+		{
+		case '1' : System.out.println("Sunday");
+			break;
+		case '2' : System.out.println("Monday");
+			break;
+		case '3' : System.out.println("Tuesday");
+			break;
+		case '4' : System.out.println("wensday");
+			break;
+		case '5' : System.out.printnln("Thrusday");
+				break;
+		}
+	}
+}
+```
+--------------------------------END-------------------------------
+
+2.5 	problem:
+			2.5 : write a JAVA program to find the prime number between given range
+```java
+import java.util.Scanner;
+class primeno
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println(" Enter the initial value for range: ");
+		int low = sc.nextInt();
+		System.out.println(" Enter the final value for range: ");
+		int high = sc.nextInt();
+		while(low<high)
+		{
+			boolean flag = false;
+			for(int i = 2 ; i<i/2 ; i++)
+			{
+				if(low%i == 0)	
+				{
+					flag = true;
+					break;
+				}
+			}			
+			if(!flag)
+				System.out.println(low+" ");
+			++low;
+		}
+	}
+}
+```
+--------------------------------END-------------------------------
+---------------------------------03------------------------------
+3.	Extra problem :
+	~problem:
+		time_2_4_1.java{write a program to calculate current time in hrs,min,sec.(usign finction System.curretTimeMillis();)}
+	~problem:
+		b_t_d_and_d_t_b_2_4_2.java{write a program that dose binary to decimal and decimal to binary} 
+	~problem:
+		factorial_2_4_3.java{write a program tha takes an integer n and calculate n! }
+		
+
+		
+		
+		
+		
+
+
+  
+			  

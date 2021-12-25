@@ -1,0 +1,2 @@
+//problem  2.4.5
+	//calincresment_2_4_5.java: write a program that clculate how much a Rs. 10000 incestement would be worth if it increased in value by 20% during the first year, lost Rs.500 in calue in the second year, and increase 16% int the third year.
