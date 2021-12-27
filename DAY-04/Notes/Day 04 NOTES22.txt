@@ -1,0 +1,291 @@
+DAY-04
+Index
+01.Class 
+	01.1 example
+02.Constructor
+	02.1 example
+	02.2 example
+03.Constructor overloading
+	03.1 example
+04.Extra problem 
+	04.1: Write a program  to generate the Fibonacci series
+	04.2" Write a program to generate the sorting order of array
+	04.3: Design a class named Rectangel to represent a recrangle. The class contains:
+			-Two double data fields named width and height that specify the width and height of the rectangle. The default values are 1 for both width and height.
+			-A no-arg constructor that crates a default rectangle.
+			-a constructor that creates a rectangle with the specified width and height.
+			-A method named getArea()that returns the area of this rectangle.
+			-A method named getPrtimeter() that returns the perimeter.
+		 Implement the class. Write a test program the creates two Rectangle obgects--one with width 4 and height 40 and the other with width 3.5 and height 35.9. Display the width,height,area and perimeter of each rectangle in this oreder.
+	04.4: Design a class named Account that contains:
+			-A private int data field named id for the account(default 0).
+			-A private double data fiels named balance for the account(default 0).
+			-A pricate double data field named annualInterestRate that stores the current interest rate(default 0).Assume all accounts have the same interest rate.
+			-A private Data data field named dateCreated that stores the date when the account was created.
+			-A no-arg constructor that creates a default account.
+			-A constructor that creates an account with the specified id and initial balance
+			-The accessor and mutator methods for id,balance and annaulInterestRate.
+			-The accessor method for dateCreated.
+			-A method named getMonthlyInterestRate() that returns the monthly interest rate.
+			-A method named withdraw that withdraws a specified amounnt from the account.
+			-A method named deposit that deposits a specified amount to the account.
+		 Implement the class. Write a test program that creates an Account object with an account ID of 1122,a balance of $20,000 and an annual interest rate of 4.5%. Use the withdraw method to withdraw $2,500 use the deposit method to deposite $3,000 and print the balance, the monthly interest, and the date when this account was created.
+	04.5: Create a class recangle. The class has two attributes, lenght and width. Each of which default to 0. It hs method that calculate the perimeter and area of the rectangel. It has set and get method for both length and width. The set method should verify that length and width are floating-point number larger thab 0.0 and less than 20.0.	 
+
+---------------------------------START----------------------------
+----------------------------------01------------------------------
+
+01.Class 
+	01.1 example
+
+```java
+class circle
+{
+	float pi = 0.0f;
+	float radius;
+	void setdata(float rad)
+	{
+		radius = rad;
+	}
+	float calcu()
+	{
+		float area = pi*pi*radius;
+		return area;
+	}
+}
+class circlearr
+{
+	public static void main(String[] args)
+	{	
+		circleaa = new circle();
+		aa.pi = 3.14f;
+		aa.setdata(20.0f);
+		System.out.println("Area of circle is: "+aa.calcu());
+	}
+}
+
+```
+~in above program the value of 'pi' can be modified in class 
+~to make variable unchanged by objects we have to private keyword before declearing the keyword.
+	example: 01.2
+```java
+class circle
+{
+	private float pi = 0.0f;
+	private float radius;
+	void setdata(float rad)
+	{
+		radius = rad;
+	}
+	float calcu()
+	{
+		float area = pi*pi*radius;
+		return area;
+	}
+}
+class circlearr
+{
+	public static void main(String[] args)
+	{	
+		circleaa = new circle();
+		aa.pi = 3.14f;// it will generate error
+		aa.setdata(20.0f);
+		System.out.println("Area of circle is: "+aa.calcu());
+	}
+}
+```
+---------------------------------END------------------------------
+--------------------------------02--------------------------------
+02.Constructor
+~in previous program 'circle()' keyword is the constructor.
+~or using the class name to create objects
+~constructor has same name as class in which they reside.
+~constructor are syntactically same to a method/function.
+~constructor get called automaticallt when objects is created using new operator.
+~constructor have no return type, not even void.
+~implict return type of constructor is class type itself.
+	syntax:
+		constructor_name(parameter)//way to write a constructor
+		{...}
+		
+		return_type function_name(parameter)//way of writting noramal code
+		{...}
+~if a user has not define any constructor in a class than it have by default constructor.
+	default constructor: it automatically initialize the class instance variable by zero.
+	-once user created constructor thel there is no default constructor.
+	example: 02.1:
+```
+java
+class room
+{
+	float length, height , width ,vol;
+	room()//it does not have any parameter
+	{
+		length =20.0f;
+		height = 14.0f;
+		width = 10.0f;
+	}
+	float volume()
+	{
+		vol = length * height * width;
+		return vol;
+	}
+}
+class arrroom
+{
+	public static void main(String args[])
+	{
+		room aa = new room();
+		System.out.println("volume of the room is: "+aa.volume());
+		
+		//if we create the one more object then it will also have the same value 
+		room bb = new room();
+		System.out.println("volume of the second room is: "+bb.volume());
+		
+	}
+}
+```
+~constructor in above program is parameterless constructor because it doesn't have any parameter
+~to create the parameterized constructor we have to add the parameter in constructor
+
+	example: 02.2
+```java
+class room
+{
+	int length, height , width ,vol;
+	room(int l,int h,int w)//it is having some parameter
+	{
+		length = l;
+		height = h;
+		width = w;
+	}
+	int volume()
+	{
+		vol = length * height * width;
+		return vol;
+	}
+}
+class arrroom
+{
+	public static void main(String args[])
+	{
+		room r1 = new room(2,5,4);
+		System.out.println("volume of the room is: "+r1.volume());
+		
+		//if we create the one more object then it will also have the same value 
+		room r2 = new room(5,5,5);
+		System.out.println("volume of the second room is: "+r2.volume());
+		
+	}
+}
+```
+---------------------------------END------------------------------
+--------------------------------03--------------------------------
+03.Constructor overloading
+~Constructor Overloading:
+	when the same constructor is able to do the different things depending on the calue what kind of value are passing to that constructor
+~overloading is concept of polymorphism
+~means -- when we assign the multiple task to same thing
+		example :
+```
+class rectangle
+{
+	int length , height;
+	rectangle()//parameterless
+	{
+		length = 10;
+		height = 20;
+	}
+	rectangle(int x ,int y )//parameterized
+	{
+		lenght =x ;
+		height = y ;
+	}
+	int getarea()
+	{
+		return lenght*height;
+	}
+}
+```
+~constructor overloading is differential by the type, and number of parameter 
+			like first constructor have no parameter and second has two parameter or may be third parameter have other type of three parameter
+~when we create two constructor with same name and pass the different value this is called as the constructor overloading.
+	example: 03.1	
+```java
+class rectangle
+{
+	int length , height;
+	rectangle()//parameterless
+	{
+		length = 10;
+		height = 20;
+	}
+	rectangle(int x ,int y )//parameterized
+	{
+		length =x ;
+		height = y ;
+	}
+	int getarea()
+	{
+		return length*height;
+	}
+}
+class getrectangle
+{
+	public static void main(String args[])
+	{
+		rectangle a = new rectangle();
+		System.out.println("first constructor area: "+a.getarea());
+		
+		rectangle b = new rectangle(5,4);
+		System.out.println("first constructor area: "+b.getarea());
+		
+	}
+}
+
+```
+---------------------------------END------------------------------
+	
+04.Extra problem 
+	problem 04.1:
+		fibonacci_04_1.java : Write a program  to generate the Fibonacci series
+	problem 04.2:
+		sort_arr_04_2.java : Write a program to generate the sorting order of array
+	problem 04.3:
+		class_rect_04_3.java : Design a class named Rectangel to represent a recrangle. The class contains:
+			-Two double data fields named width and height that specify the width and height of the rectangle. The default values are 1 for both width and height.
+			-A no-arg constructor that crates a default rectangle.
+			-a constructor that creates a rectangle with the specified width and height.
+			-A method named getArea()that returns the area of this rectangle.
+			-A method named getPrtimeter() that returns the perimeter.
+		 Implement the class. Write a test program the creates two Rectangle obgects--one with width 4 and height 40 and the other with width 3.5 and height 35.9. Display the width,height,area and perimeter of each rectangle in this oreder.
+	problem 04.4
+		class_account_04_4.java : Design a class named Account that contains:
+			-A private int data field named id for the account(default 0).
+			-A private double data fiels named balance for the account(default 0).
+			-A pricate double data field named annualInterestRate that stores the current interest rate(default 0).Assume all accounts have the same interest rate.
+			-A private Data data field named dateCreated that stores the date when the account was created.
+			-A no-arg constructor that creates a default account.
+			-A constructor that creates an account with the specified id and initial balance
+			-The accessor and mutator methods for id,balance and annaulInterestRate.
+			-The accessor method for dateCreated.
+			-A method named getMonthlyInterestRate() that returns the monthly interest rate.
+			-A method named withdraw that withdraws a specified amounnt from the account.
+			-A method named deposit that deposits a specified amount to the account.
+		 Implement the class. Write a test program that creates an Account object with an account ID of 1122,a balance of $20,000 and an annual interest rate of 4.5%. Use the withdraw method to withdraw $2,500 use the deposit method to deposite $3,000 and print the balance, the monthly interest, and the date when this account was created.
+	problem 04.4:
+		classrectangle_04_5.java : Create a class recangle. The class has two attributes, lenght and width. Each of which default to 0. It hs method that calculate the perimeter and area of the rectangel. It has set and get method for both length and width. The set method should verify that length and width are floating-point number larger thab 0.0 and less than 20.0.	 
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
