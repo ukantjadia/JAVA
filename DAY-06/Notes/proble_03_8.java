@@ -1,0 +1,2 @@
+proble 03.8
+			proble_03_8.java 	:	Write a program to construct Box class that stores width,height and depth of the box and extends Box class to include weight parameter in BoxWeight class and calculate the volume and weight of different boxes with the help of super keywaord(Demonstration of super keyword to call base class constructor).

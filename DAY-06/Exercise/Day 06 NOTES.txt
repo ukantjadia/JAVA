@@ -1,0 +1,485 @@
+Day- 06 
+Index
+01.Super
+02.Final
+03.Extra problem
+	03.1:	Create a simple class to compare the value of two integers, where these two integers belong to different objects of the same class using method  which takes object as a parameter.(Dempnstration of method taking object as parameter)
+	03.2:	Create a simple calss to compare the value of two integers, where these two integers belong to different objects of the same class using method which takes object as a parameter and returns the object which contains the larger value.(Demonstration of method returning object)
+	03.3:	Write a program to perform garbage collection.
+	03.4:143	write a program to calculate the factorial of the given number using recursion.
+	03.5:	Demonstration of static variables to perform the addition the addition without creaeting any object in the class.(Demonstration of static variable and static methods)
+	03.6:	Write a program to print your name by using the concept of command line arguments passing mechanism.
+	03.7:	Write a program to constructor Box calss that stores width, height and depth of the box and extend Box class to include weight parameter in BoxWeight class and calcuate the volume and weight of different boxes.(Demonstration of single level inheritance)
+	03.8	Write a program to construct Box class that stores width,height and depth of the box and extends Box class to include weight parameter in BoxWeight class and calculate the volume and weight of different boxes with the help of super keywaord(Demonstration of super keyword to call base class constructor).
+	03.9	Demonstration of calling order of constructors in multilevel inheritance as in the above program.
+	03.10	Demonstration of method overriding with the help of supr keywaord.
+	03.11	Demonstration of instance variable hiding with the help of super keyword.
+	03.12	Demonstration of multilevel inheritance by extending class A in class B and class C, all classesmust have some instance variables and methods. 
+	03.13	Define a class MotorVehicle as described below:
+				a. modelName
+				b. modelNumber
+				c. modelPrice
+			Methods:
+				d. display() method to display the name, price and model number.
+			Define anothe class named Car that inherits the class MotorVehicle and has the following:
+			Data Members:
+				e. discountRate
+			Methods:
+				f. display() method to display the Car name, car model number, car price and the discount rate.
+				g. Discount() method to compute the discount
+			Create the classes MotorVehicle and Car with suitable constructor and test it.
+	03.14	Define a class name as College as shown below:
+			Data members:
+				a. Collegename 
+				b. Address
+			Method:
+				c. showCollegeDetails() to show the details about the college
+			define another class named Department that inherits the College and has the following:
+			Data members:
+				d. departmentName
+				e. hodName
+			Method:
+				j. showFacultyMemberDetails() to show the details of the faculty members within a particular dapartment in a college.
+			Create classes for College, Department and FacultyMember with suitable constructor and test them.	
+---------------------------------START----------------------------
+----------------------------------01------------------------------
+01.Super
+~it refer to its parent class
+~If the object of child class want to access the feature of parent class with the help of child class object then we use the keyword 'super'
+
+~purpose/way of use 'super'
+1.use to call the method of super class/parent
+2.use to access the member  variable of the super class/parent class
+3.use to invoke the constructor of the super class parent class
+	example: showing the '1' use of super --> calling the method from parent class using super
+```java
+class A
+{
+	void show()
+	{
+		System.out.println("Super class show method A");
+	}
+}
+class B extends A
+{
+	void show()
+	{
+		System.out.println("Sub class show method B");
+	}+
+}
+class Test
+{
+	public static void main(String args[])
+	{
+		A a = new A();
+		a.show();//calling first show() using the object of class A
+		
+		B b = new B();
+		b.show();//calling second show() using the object of class B
+	}
+}
+//we can call the show() function from second class object using the super keywaord
+
+```
+~to call a parent class show function from the child class object we have to add the super keyword in the show function of child class in first line 
+as shown below
+```java
+class A
+{
+	void show()
+	{
+		System.out.println("Super class show method A");
+	}
+}
+class B extends A
+{
+	void show()
+	{
+		super.show();
+		System.out.println("Sub class show method B");
+	}
+}
+class Test
+{
+	public static void main(String args[])
+	{
+		//A a = new A();
+		//a.show();//calling first show() using the object of class A
+		
+		B b = new B();
+		b.show();//calling first and second show() using the object of class B
+	}
+}
+```
+~we have to add in first line of the function because the parent class should get initiallize first, if it does not then it will generate an error
+
+	example: showing the '2' use of super --> accessing the member of parent class variable using super
+```java
+class A
+{
+	int b = 30;
+}
+class B extends A
+{
+	int b = 12;//creating same as the parent class instance variable change the value
+	void show()
+	{
+		System.out.println("Sub class variable: "+b);//12
+		System.out.println("Super class variable: "+b);//12
+	}
+}
+class Test 
+{
+	public static void main(String args[])
+	{
+		B a = new B();
+		a.show();
+	}
+//if we see the output it will give the both value of b from the same child class as 12
+
+```
+~to call the instance variable of parent class using super keyword as show below
+```java
+class A
+{
+	int b = 30;
+}
+class B extends A
+{
+	int b = 12;//creating same as the parent class instance variable change the value
+	void show()
+	{
+		System.out.println("Sub class variable: "+b);//12
+		System.out.println("Super class variable: "+super.b);//30
+	}
+}
+class Test 
+{
+	public static void main(String args[])
+	{
+		B a = new B();
+		a.show();
+	}
+}
+```
+	example: showing the '3 ' use of super --> invoke the constructor of parent class variable using super
+	
+```java
+class A
+{
+	A()
+	{
+		System.out.println("constructor of class A.");
+	}
+}
+class B extends A
+{
+	B()
+	{
+		System.out.println("constructor of class B");
+	}
+}
+class C extends B
+{
+	C()
+	{
+		System.out.println("constructor of class C");
+	}
+}
+class test
+{
+	public static void main(String args[])
+	{
+		//B bb = new B();
+		C cc = new C();// this will call the all constructor by their order of Inheritance
+	}
+}
+```
+~in above program dosen't matter which constructor you are it will show as its oeder of inheritance 
+~to invoke the constructor without order we use the super keyword
+	example : 
+```java
+class A
+{
+	A()
+	{
+		System.out.println("constructor of class A.");
+	}
+}
+class B extends A
+{
+	B(int a)
+	{
+		System.out.println("constructor of class B "+a);
+	}
+}
+class C extends B
+{
+	C()
+	{
+		super(11);//it will find the similer constructor which have the a parameter
+		//the super keyword can not be in second line 
+		System.out.println("constructor of class C");
+	}
+}
+class test
+{
+	public static void main(String args[])
+	{		
+		C cc = new C();
+	}
+}
+```
+	example : using all super way
+```java
+class circle
+{
+	float radius;
+	final float pi =3.14f;
+	circle()
+	{
+		radius = 1.0f;
+	}
+	circle(float radius)
+	{
+		this.radius = radius;
+	}
+	float getArea()
+	{
+		return pi*radius*radius;
+	}
+}
+class cylinder extends circle
+{
+	flaot height;
+	cylinder(float radius , float height)
+	{
+		super(radius);
+		this.height = height;
+	}
+	float getArea()
+	{
+		return 2*super.getArea()+2*pi*radius*height;
+	}
+}
+class test
+{
+	public static void main(String args[])
+	{
+		circle c = new circle(1.5f);
+		System.out.println("Area of circle is : "+c.getArea());
+		
+		cylinder cc = new cylinder(1.5f,3.5f);
+		System.out.println("Area of cylinder is : "+ cc.getArea());
+		
+	}
+}
+```
+---------------------------------END------------------------------
+--------------------------------02--------------------------------
+02.final
+~it also has the three uses  
+1.to declear the constant
+2.to disallowed the method overeiding function
+3.to disallowed a class to get inherited
+
+	example : use of final
+```java
+class demo
+{
+	int m = 100;
+	void show(int x)
+	{
+		System.out.println("Super class show method:"+x);
+	}
+}
+class demo2 extends demo
+{
+	void show(int x)
+	{
+		System.out.println("Sub class show method:"+x);
+	}
+}
+class rest
+{
+	public static void main(String args[])
+	{
+		demo2 dd = new demo2();
+		dd.show(45);
+	}
+}// it is normal program it will not create any error.
+```
+example : showing the use of final keyword
+```java
+final class demo// it will not allowed its any child after final
+{
+	final int m = 100;
+	final void show(int x)
+	{
+		System.out.println("Super class show method:"+x);
+	}
+}
+class demo2 extends demo
+{
+	void show(int x)// it is the same as the above function or it will generate the error because of final keyword
+	{
+		System.out.println("Sub class show method:"+x);
+	}
+}
+class rest
+{
+	public static void main(String args[])
+	{
+		demo2 dd = new demo2();
+		dd.show(45);
+		m += 45;// it will create error because of the final keyword 
+	}
+}
+```
+---------------------------------END------------------------------
+	example: using super 
+```java
+class Box
+{
+	private double height;
+	private double width;
+	private double depth;
+	Box(Box ob)
+	{
+		width =  ob.width;
+		height = ob.height;
+		depth = ob.depth;
+	}
+	Box(double w, double h, double d)
+	{
+		width = w;
+		height = h;
+		depth = d;
+	}
+	Box()
+	{
+		width=height=depth=-1;
+	}
+	Box(double len)
+	{
+		width=height=depth=len;
+	}
+	double volume()
+	{
+		return width*height*depth;
+	}
+}
+
+class BoxWeight extends Box
+{
+	double weight;
+	BoxWeight(BoxWeight ob)
+	{
+		super(ob);
+		weight = ob.weight;
+	}
+	BoxWeight(double w, double h, double d, double m)
+	{
+		super(w,h,d);
+		weight = m;
+	}
+	BoxWeight()
+	{
+		super();
+		weight = -1;
+	}
+	BoxWeight(double m , double len)
+	{
+		super(len);
+		weight = m;
+	}
+}
+class shipment extends BoxWeight
+{
+	double cost;
+	shipment(shipment ob)
+	{
+		super(ob);
+		cost = ob.cost;
+	}
+	shipment(double w, double h, double d,double m, double c)
+	{
+		super(w,h,d,m);
+		cost = c;
+	}
+	shipment()
+	{
+		super();
+		cost = -1;
+	}
+	shipment(double len, double c)
+	{
+		super(len);
+		cost =c ;
+	}
+}
+class tost
+{
+	public static void main(String args[])
+	{
+		shipment rip = new shipment(10,10,10,10,10);
+		System.out.println("volu,e id :"+ rip.volume());
+	}
+}	
+```
+---------------------------------END------------------------------
+--------------------------------03--------------------------------
+03.Extra problem
+	problem:
+			obj_para_03_1.java :	Create a simple class to compare the value of two integers, where these two integers belong to different objects of the same class using method  which takes object as a parameter.(Dempnstration of method taking object as parameter)
+	problem: 
+			obj_para_03_2.java :	Create a simple calss to cmpare the value of two integers, where these two integers belong to different objects of the same class using method which takes object as a parameter and returns the object which contains the larger value.(Demonstration of method returning object)
+	problem:
+			GC_03_3.java :	Write a program to perform garbage collection.
+	problem:
+			recursion_03_4.java :	write a program to calculate the factorial of the given number using recursion.
+	problem:
+			addition_03_5.java :	Demonstration of static variables to perform the addition the addition without creaeting any object in the class.(Demonstration of static variable and static methods)
+	problem:	
+			cmd_arg_03_6.java :	Write a program to print your name by using the concept of command line arguments passing mechanism.
+	problem:
+			Box_Weight_03_7.java :	Write a program to constructor Box calss that stores width, height and depth of the box and extend Box class to include weight parameter in BoxWeight class and calcuate the volume and weight of different boxes.(Demonstration of single level inheritance)
+	problem:
+			Box_Weight_super_03_8,java :	Write a program to construct Box class that stores width,height and depth of the box and extends Box class to include weight parameter in BoxWeight class and calculate the volume and weight of different boxes with the help of super keywaord(Demonstration of super keyword to call base class constructor).
+	problem:
+			Inheri_multilevel_03_9.java  :	Demonstration of calling order of constructors in multilevel inheritance as in the above program.
+	problem:
+			overriding_super_03_10.java :	Demonstration of method overriding with the help of supr keywaord.
+	problem:
+			instance_super_03_11.java :		Demonstration of instance variable hiding with the help of super keyword.
+	problem:
+			Inheri_multilevel_extend_03_12.java :	Demonstration of multilevel inheritance by extending class A in class B and class C, all classesmust have some instance variables and methods. 
+	problem:
+			MotorVehicle_03_13.java :	Define a class MotorVehicle as described below:
+											a. modelName
+											b. modelNumber
+											c. modelPrice
+										Methods:
+											d. display() method to display the name, price and model number.
+										Define anothe class named Car that inherits the class MotorVehicle and has the following:
+										Data Members:
+											e. discountRate
+										Methods:
+											f. display() method to display the Car name, car model number, car price and the discount rate.
+											g. Discount() method to compute the discount
+										Create the classes MotorVehicle and Car with suitable constructor and test it.
+	problem:
+			College_03_14.java :	Define a class name as College as shown below:
+									Data members:
+										a. Collegename 
+										b. Address
+									Method:
+										c. showCollegeDetails() to show the details about the college
+									define another class named Department that inherits the College and has the following:
+									Data members:
+										d. departmentName
+										e. hodName
+									Method:
+										j. showFacultyMemberDetails() to show the details of the faculty members within a particular dapartment in a college.
+									Create classes for College, Department and FacultyMember with suitable constructor and test them.	
+---------------------------------END------------------------------
