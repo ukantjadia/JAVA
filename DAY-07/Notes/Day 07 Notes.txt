@@ -1,0 +1,264 @@
+Day-07
+Index:-
+01.Local variable
+02.Instance variable
+03.Static variable
+04.Static method 
+05.this keyword
+06.Method overloading
+07.Object as a parameter
+
+------start----
+----01----
+01. Local Variable 
+~local variable are declared 
+	inside method 
+	inside constructor
+	inside any block of code
+	variable as a method parameter
+	
+~Whenever this method, constructor, any block of code is called in program then the all local variable are initialize.
+	OR
+~When the constructor method ot block of code is over then variable get destroy.
+~life of local variable is untill the block of code is working or running
+~locak variable cnanot be decllared as private or protected.
+------end -----
+-----02-----
+02.Instance Variable
+~these variable are declared inside a class but outside a method.
+~instance variable is also known as the data member, field, attribute.
+~whenever we create a a object, this instance variable get initalized.
+~and every object will cerate a seprate copy of the instane variable.
+~life time of a instance variable is equal to the life time of a class
+~when the class is terminated then all the instance variable get terminate auto matically.
+----end ---
+----03-----
+03.Static/class variable
+~this variable are declerade with the 'static'keyword.
+~static variable declearad inside a class and outside a method.
+~in case of static variable all object get a same copy of variable or all objects are sharing a variable.
+~we use this class/static variable to declare a constant variable
+~In java we don't have the global variable but static variable are used to create global vatiable.
+
+	example: how to work with static variable
+```java
+class test
+{
+	int instanceVar ;
+	static int staticVar ;
+	void setInstance(int inputInstance)
+	{
+		instanceVar = inputInstance;
+	}
+	void setStatic(int inputStatic)
+	{
+		staticVar = inputStatic; 
+	}
+	int returnInstance()
+	{
+		return instanceVar;
+	}
+	int returnStatic()
+	{
+		return staticVar;
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		test obFirst = new test();
+		test obSecond = new test();
+		
+		obFirst.setInstance(9);
+		obSeconf.setInstance(23);
+		
+		System.out.println("instance variable using first object: "+obFirst.returnInstance());
+		System.out.println("instance variable using second object: "+obSecond.returnInstance());
+		
+		obFirst.setStatic(90);
+		obSeconf.setStatic(230);
+		
+		System.out.println("static variable using first object: "+obFirst.returnStatic());
+		System.out.println("static variable using second object: "+obSecond.returnStatic());
+	}
+}			
+```
+~we can access the static variable outside the class without using the object but by using the class name of static variable.
+-------end -----
+---------04--------
+04.Static Method
+~static method can access the static variable directly.
+~variable doesn't decleared as staic cannot be access by the static method.
+	example: showing static method accessing the different variables
+```java
+class test
+{
+	int instanceVar = 3;
+	static int staticReturn() 
+	{
+		return instanceVar;
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		//test obFirst = new test();
+		System.out.println("accessing the static method using instance variable: "+test.staticReturn());
+	}
+}
+```
+------end -----
+-------05------
+05.this keyword
+		example: explain the this keyword by taking a example
+```java
+class box
+{
+	double width , height, length;
+	box(double w, double h, double l)
+	{
+		width = w;
+		height = h;
+		lenght = l;
+	}
+	double volume()
+	{
+		return witdh*height*length;
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{	
+		box ob - new box(10,20,30);
+		System.out.println("Volume of box is: "+ob.volume());
+	}
+}
+```
+~this program will work fine there is no caught while compling and running.
+~but what if we made constructor local variable as same name as the instance variable [OR changing the parameter variable as instance variable] then it will generate error
+		shown in below program
+```
+	box(double width, double height, double lenght)
+	{
+		width = width;
+		height = height;
+		lenght = lenght;
+	}
+```
+~using this we are not able to initiallize the instance variable the value are only reassign to the local variable
+~and we want to kept the same name of parameter than we have to use the 'this' keyword shown in below program
+```java
+class box
+{
+	double width , height, length;
+	box(double width, double height, double lenght)
+	{
+		this.width = width;
+		this.height = height;
+		this.lenght = lenght;
+	}
+	double volume()
+	{
+		return witdh*height*length;
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{	
+		box ob - new box(10,20,30);
+		System.out.println("Volume of box is: "+ob.volume());
+	}
+}
+```
+~here this keyword is referring to the object which created in main class or
+~'this' is always associated with object
+------end------
+-----06------
+06.Method overloading
+~method overloading means more than one method with the same name and their parameters are different
+~polymorphism- means single interfave. multiple behaviour
+	behaviour is identified by parameter
+example: 	show the working of method overloading
+```java
+class methodoverloadin
+{
+	void test()
+	{
+		System.out.println("no parameter");
+	}
+	void test(int a )
+	{
+		System.out.println("a : "+a);
+	}
+	void test(int a, int b)
+	{
+		System.out.println("a and b : "+a+"  "+b );
+	}
+	double test(double k)
+	{
+		System.out.println("a :"+a);
+		return a*a;
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		methodoverloading ob = new methodoverloading();
+		double result;
+		ob.test();
+		ob.test(5);
+		ob.test(10,20);
+		result = ob.test(12.543);
+		System.out.println("result :"+result);
+	}
+}
+```
+---end
+----07-----
+07.object as a parameter
+~when we are creating a class it is user define data-type
+~when we create a object of that class then we are createing the variable of user defined data-type
+	example
+```java	
+class test 
+{
+	int a,b;
+	test(int i, int j)
+	{
+		a =i;
+		b =j;
+	}
+	booleand equals(test o)
+	{
+		if(o.a == a && o.b == b)
+			return true;
+		else 
+			return flase;
+	}
+}
+class Main
+{
+	public static void main(String args[])
+	{
+		test obOne = new test(10,20);
+		test obTwo = new test(10,20);
+		test obThree = new test(1,2);
+		
+		System.out.println("obOne ==  obTwo : "+obOne.equals(obTwo));
+		System.out.println("obOne ==  obThree : "+obOne.equals(obThree));
+	}
+}
+
+---end
+----08-----
+08. question
+1. Write a program to construct Box class that stores width, height, and depth of the box and display the dimension on to the screen and also calculate the volume of the box using method.(Demonstration of method and calling method and object creation).
+2. Implement Money class. This class should initialize a rupee and paisa amount with 0-99 paisa and the paisa being the sign as the rupees. The class should at minimum have all reasonable cinstructors, addition, and substration methodsm and main() method that provides a through test of all the methods in the class.
+3. Create a complex number class, the class should have a constructor and methods to add, subtract and multiply two complex numbers, and to return the real and imaginary parts.
+4. Create a class Rectangle. The class has two attributes lenght and width, each of which defaults to 0. It has methods that calculate the perimeter and area of the rectangle. It has set and get methods for both length and width. The set method should verify that length and width are floating point number larger than 0.0 and less than 20.0.
+5. Write a program to constructor Box class that stores witdth, height and depth of the box and use different types of constructors to initialize various object of the box class and display volume of different boxes.
